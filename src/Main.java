@@ -15,7 +15,7 @@ public class Main extends Application {
         Scene scene = new Scene(root,100,100,Color.BLACK);
         //setBackgroundImage(root);
         Blook blook = new Blook(root);
-        blook.move();
+        blook.move(scene);
         primaryStage.setScene(scene);
         primaryStage.setHeight(600);
         primaryStage.setWidth(800);

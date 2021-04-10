@@ -2,14 +2,17 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class Blook {
+    private static final int GHAME_HARKAT=10;
     private int type;
     private Pane root;
     private double x;
@@ -33,12 +36,13 @@ public class Blook {
     private void setType(){
         type = (int) ((Math.random()*4)+1);
     }
-    public void move(){
-        Timeline tl = new Timeline(new KeyFrame(new Duration(100),
+    public void move(Scene s){
+        Timeline tl = new Timeline(new KeyFrame(new Duration(1000),
                 new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        imgVi.setY(imgVi.getY()+10);
+                        readEventAndDoIt(s);
+                        imgVi.setY(imgVi.getY()+GHAME_HARKAT);
                         if(isThisTheEnd()) {
                             setType();
                             drawImage(root);
@@ -57,6 +61,17 @@ public class Blook {
         boolean b;
         b =  imgVi.getY() >= 600;
         return b;
+    }
+
+    private void readEventAndDoIt(Scene s){
+        s.setOnKeyPressed(e -> {
+            if(e.getCode()== KeyCode.RIGHT)
+                imgVi.setX(imgVi.getX()+GHAME_HARKAT);
+            if(e.getCode()== KeyCode.LEFT)
+                imgVi.setX(imgVi.getX()-GHAME_HARKAT);
+            if(e.getCode()== KeyCode.DOWN)
+                imgVi.setY(imgVi.getY()+GHAME_HARKAT);
+        });
     }
 
 }
