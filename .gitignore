@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/.idea
+/out
+/HextrisMintermPrg.iml
+# Datasource local storage ignored files
+/../../../../:\java FX Prg\HextrisMintermPrg\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
